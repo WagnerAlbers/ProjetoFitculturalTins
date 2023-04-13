@@ -90,7 +90,7 @@ DATABASES = {
 import dj_database_url
 import os
 
-DATABASE_URL = os.getenv('MYSQL_URL')
+DATABASE_URL = os.getenv('mysql://root:beYwt4v7vuIuojWbCeeW@containers-us-west-12.railway.app:7200/railway')
 
 if DATABASE_URL:
     DATABASES = {
