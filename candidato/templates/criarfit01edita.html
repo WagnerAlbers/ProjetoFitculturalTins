@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block titulo %}
+    Págian 01 do perfil
+{% endblock %}
+
+{% block conteudo %}
+    <header class="min-h-fit bg-black bg-opacity-50 bg-blend-overlay showcase border-gray-600 border-b-10 flex justify-center items-center bg-no-repeat"
+                                style="background-image: url('{% static 'images/fundo_novo.jpg' %}');">
+        <div style="margin-top: 100px;" class="z-10 h-full py-32 md:py-0 text-light text-left flex items-center flex-col">
+             <form class="row g-3 col " method="post">
+               {% csrf_token %}
+                <fieldset style="width: 600px;" class="form-group">
+                    {{ form|crispy }}
+                    <div style="width: 300px;">
+                       <button class="bg-lime-600 py-1 px-4 text-white md:text-lg rounded-md" type="submit">Continuar...</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </header>
+    <br>
+    <hr>
+    <footer class=" px-5 py-10 ">
+        <ul class="flex justify-between items-center">
+            <li>&copy; 2023</li>
+            <li> Feito com Python-3.10 (Django-4.2)</li>
+            <li>TINS - Tecnologia e Gestão Documental</li>
+        </ul>
+    </footer>
+{% endblock %}

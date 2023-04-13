@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+   Perfil no Fit Cultural
+{% endblock %}
+
+{% block head %}
+    <style>
+        #id_email{
+        width: 100%;
+        color:#0a2460;
+        padding: 5px 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block conteudo %}
+
+    <header class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600
+             border-b-8 flex justify-center items-center bg-no-repeat"
+             style="background-image: url('{% static 'images/fundo_novo.jpg' %}');">
+        <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
+            <h1 class="font-semibold text-4xl md:text-5xl w-10/12 md:w-3/4 text-center">
+                Faça parte da Equipe<br>
+                TINS Gestão Inteligente
+            </h1>
+            <h2 class="text-xl md:text-xl py-3">
+                Avaliamos o seu currículo e estamos felizes que esteja participando desse processo
+                <br>
+                seletivo. Esse é o primeiro passo para o seu futuro TINS Gestão Inteligente.
+            </h2>
+            <h3 class="text-sm md:text-lg pb-3">
+                1º Responder ao fit cultural.<br>
+                2º Teste Técnico Lógico.<br>
+                3º Entrevista presencial.<br>
+                4º Dinâmica final e boas vindas!
+            </h3>
+            <h4 class="text-sm md:text-lg pb-3">
+              Agora é o momento de você responder o fit cultural!! LOOKING AHEAD 🚀<br>
+              Este é um questionário de alinhamento com a cultura da TINS Gestão Inteligente,<br>
+              mapeamento de softskills e hardskills. Não existem perguntas certas ou erradas,<br>
+              apenas responda todas as questões com calma e sinceridade.
+            </h4>
+            <h5 class="text-sm md:text-lg pb-3">
+              O resultado final sempre será positivo para nós e para você!
+                <p>Preencha com seu E-Mail e boa sorte...</p>
+            </h5>
+
+            <div class="w-full flex justify-center">
+                <div class="flex justify-center items-center w-11/12 md:w-10/12">
+                    <form method="post" class="w-6/12 justify-center">
+                         {% csrf_token %}
+                        <div class="flex flex-grow items-stretch text:black">
+                            {{ form }}
+                            <button class="bg-red-600 font-medium md:font-normal flex justify-center items-center py-2 px-3 md:px-0 rounded-br-sm rounded-tr-sm md:text-2xl" type="submit">
+                                <span>
+                                    Acessar
+                                </span>
+                                <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <footer class=" px-5 py-10 ">
+        <ul class="flex justify-between items-center">
+            <li>&copy; 2021</li>
+            <li> Feito com Python 3.10 (Django 4.1)</li>
+            <li>Tins - Tecnologia e Gestão documental</li>
+        </ul>
+    </footer>
+{% endblock %}
