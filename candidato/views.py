@@ -374,23 +374,74 @@ class AlteraFitCult01(UpdateView):
 
 class NovoFitCult01Edita(UpdateView):
     template_name = "criarfit01edita.html"
+    model = Cad_colab_parte1
     form_class = CriarFitCult01
+    context_object_name = 'candidatofit'
 
     def get_object(self, queryset=None):
+        candidatofit = None
         cpf_candidato = self.kwargs.get('cpf')
-        return cpf_candidato
+        if cpf_candidato:
+            candidatofit = Cad_colab_parte1.objects.filter(campo_cpf=cpf_candidato).first()
 
-    def get(self, request, *args, **kwargs):
-        cpf_candidato = self.get_object(self)
-        form = self.form_class(initial={'campo_cpf':cpf_candidato})
-        return render(request, self.template_name, {'campo_cpf':cpf_candidato, 'form':form})
+        # Retorna o objeto encontrado
+        return candidatofit
 
     def form_valid(self, form):
         form.save()
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        cpf_candidato = self.get_object(self)
-        registro = Cad_colab_parte1.objects.filter(campo_cpf=cpf_candidato).first()
-        codigo = registro.campo_cpf
-        return reverse('candidato:criarfit02', kwargs={'cpf':codigo})
+        candidato = self.get_object(self)
+        cpf_candidato = candidato.campo_cpf
+        return reverse('candidato:criarfit02', kwargs={'cpf':cpf_candidato})
+
+
+class NovoFitCult02Edita(UpdateView):
+    template_name = "criarfit02edita.html"
+    model = Cad_colab_parte2
+    form_class = CriarFitCult02
+    context_object_name = 'candidatofit'
+
+    def get_object(self, queryset=None):
+        candidatofit = None
+        cpf_candidato = self.kwargs.get('cpf')
+        if cpf_candidato:
+            candidatofit = Cad_colab_parte2.objects.filter(campo_cpf=cpf_candidato).first()
+
+        # Retorna o objeto encontrado
+        return candidatofit
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        candidato = self.get_object(self)
+        cpf_candidato = candidato.campo_cpf
+        return reverse('candidato:criarfit03', kwargs={'cpf':cpf_candidato})
+
+
+class NovoFitCult03Edita(UpdateView):
+    template_name = "criarfit03edita.html"
+    model = Cad_colab_parte3
+    form_class = CriarFitCult03
+    context_object_name = 'candidatofit'
+
+    def get_object(self, queryset=None):
+        candidatofit = None
+        cpf_candidato = self.kwargs.get('cpf')
+        if cpf_candidato:
+            candidatofit = Cad_colab_parte3.objects.filter(campo_cpf=cpf_candidato).first()
+
+        # Retorna o objeto encontrado
+        return candidatofit
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        candidato = self.get_object(self)
+        cpf_candidato = candidato.campo_cpf
+        return reverse('candidato:contpt01', kwargs={'cpf':cpf_candidato})

@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+8vbbl!+9^3f9w$o@-954%t8(yqnwbkewf7pazxh&og9-4(b$h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -87,10 +87,22 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'fitcultural',
+#         'USER': 'root',
+#         'PASSWORD': '123456',
+#         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',
+#     }
+# }
+
 import dj_database_url
 import os
 
 DATABASE_URL = os.getenv('mysql://root:beYwt4v7vuIuojWbCeeW@containers-us-west-12.railway.app:7200/railway')
+#DATABASE_URL = None
 
 if DATABASE_URL:
     DATABASES = {

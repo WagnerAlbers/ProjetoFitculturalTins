@@ -15,6 +15,11 @@
                 <fieldset style="width: 600px;" class="form-group">
                     {{ form|crispy }}
                     <div style="width: 300px;">
+                        <button class="bg-red-600 py-1 px-4 text-white md:text-lg rounded-md" type="submit" id="voltar" name="voltar">
+                        <span>
+                            <a href="{% url 'candidato:criarfit03edita' form.campo_cpf.value %}">Voltar...</a>
+                        </span>
+                        </button>
                        <button class="bg-red-600 py-1 px-4 text-white md:text-lg rounded-md" type="submit">Continuar...</button>
                     </div>
                 </fieldset>
